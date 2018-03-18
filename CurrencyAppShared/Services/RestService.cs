@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CurrencyAppShared.Services
 {
-    class RestService : IRestService
+    public class RestService : IRestService
     {
         private HttpClient _client;
         private StringBuilder _mainUrl;
@@ -18,18 +18,13 @@ namespace CurrencyAppShared.Services
         public RestService(string ApiPrefix)
         {
             _client = new HttpClient();
-            _mainUrl = new StringBuilder(@"http://192.168.0.51:52505/").Append(ApiPrefix);
+            _mainUrl = new StringBuilder(@"http://api.nbp.pl/api/exchangerates/").Append(ApiPrefix);
             _uri = new Uri(_mainUrl.ToString());
-        }
-
-        public Task DeleteDataAsync(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<string> GetDataAsync(string urlPrefix)
         {
-            //InitRequest();
+            InitRequest();
             _httpRequestMessage.RequestUri = new Uri(_uri, urlPrefix);
             HttpResponseMessage response = null;
             try
@@ -48,6 +43,11 @@ namespace CurrencyAppShared.Services
             return "error";
         }
 
+        public Task DeleteDataAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task PostDataAsync(string urlPrefix, string item, bool isNewItem = false)
         {
             throw new NotImplementedException();
@@ -60,7 +60,7 @@ namespace CurrencyAppShared.Services
         private void InitRequest()
         {
             _httpRequestMessage = new HttpRequestMessage();
-            //_httpRequestMessage.Headers.Add("Authorization", "Bearer " + App.Current.Properties["Token"]);
+            _httpRequestMessage.Headers.Add("Accept", "application/xml");
         }
     }
 }

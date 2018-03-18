@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CurrencyAppShared.IServices
 {
-    interface IRestService
+    public interface IRestService
     {
         Task<string> GetDataAsync(string urlPrefix);
         Task PostDataAsync(string urlPrefix, string item, bool isNewItem = false);

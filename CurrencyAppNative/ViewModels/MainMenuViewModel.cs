@@ -1,5 +1,7 @@
 ﻿using CurrencyAppNative.UWPUtils;
 using CurrencyAppShared.Models;
+using CurrencyAppShared.IServices;
+using CurrencyAppShared.Services;
 using CurrencyAppShared.Utils;
 using System;
 using System.Collections.Generic;
@@ -23,7 +25,11 @@ namespace CurrencyAppNative.ViewModels
             Currencies.Add(new Currency { CurrencyVal = 5.43m, Name = "qwe" });
             Currencies.Add(new Currency { CurrencyVal = 3.43m, Name = "wer" });
             Currencies.Add(new Currency { CurrencyVal = 2.43m, Name = "rty" });
+            restService = new RestService("rates/a/chf/");
+            var a = restService.GetDataAsync("");
         }
+
+        IRestService restService;
 
     }
 }
