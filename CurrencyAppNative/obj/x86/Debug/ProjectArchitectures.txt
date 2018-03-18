@@ -1,0 +1,1 @@
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\CurrencyAppNative.csproj;x86

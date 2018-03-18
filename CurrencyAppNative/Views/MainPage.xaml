@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="CurrencyAppNative.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CurrencyAppNative"
+    xmlns:sharedModel="using:CurrencyAppShared.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <!--ItemsSource="{x:Bind MainMenuViewModel.CurrenciesDates}"-->
+            <ListView Grid.Column="0" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center">
+                <ListView.Header>
+                    <TextBlock Text="Date" TextAlignment="Center"/>
+                </ListView.Header>
+                <x:String>Date 1</x:String>
+                <x:String>Date 2</x:String>
+                <x:String>Date 3</x:String>
+                <x:String>Date 4</x:String>
+                <x:String>Date 5</x:String>
+            </ListView>
+            <ListView Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" ItemsSource="{x:Bind MainMenuViewModel.Currencies}">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Currency Name"/>
+                            <TextBlock Grid.Column="1" Text="Currency Value"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="sharedModel:Currency">
+                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{x:Bind Name}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind CurrencyVal}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+
+    </StackPanel>
+</Page>
