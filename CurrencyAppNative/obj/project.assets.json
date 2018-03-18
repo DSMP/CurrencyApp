@@ -254,6 +254,16 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.16299/win10-arm": {
@@ -683,6 +693,16 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
         }
       }
     },
@@ -1115,6 +1135,16 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
@@ -1544,6 +1574,16 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
         }
       }
     },
@@ -1976,6 +2016,16 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
@@ -2405,6 +2455,16 @@
         },
         "native": {
           "runtimes/win10-x86/nativeassets/uap10.0.15138/clrcompression.dll": {}
+        }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
         }
       }
     },
@@ -2836,6 +2896,16 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "CurrencyAppShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CurrencyAppShared.dll": {}
         }
       }
     }
@@ -6339,10 +6409,16 @@
         "runtimes/win10-x86/lib/uap10.0.15138/netstandard.dll",
         "runtimes/win10-x86/nativeassets/uap10.0.15138/clrcompression.dll"
       ]
+    },
+    "CurrencyAppShared/1.0.0": {
+      "type": "project",
+      "path": "../CurrencyAppShared/CurrencyAppShared.csproj",
+      "msbuildProject": "../CurrencyAppShared/CurrencyAppShared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
+      "CurrencyAppShared >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.8"
     ]
   },
@@ -6379,7 +6455,11 @@
       },
       "frameworks": {
         "uap10.0.16299": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\GitProjects\\CurrencyAppNative\\CurrencyAppShared\\CurrencyAppShared.csproj": {
+              "projectPath": "C:\\GitProjects\\CurrencyAppNative\\CurrencyAppShared\\CurrencyAppShared.csproj"
+            }
+          }
         }
       }
     },

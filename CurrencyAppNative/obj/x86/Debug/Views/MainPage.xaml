@@ -7,7 +7,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='2' Icon="Cancel"                                                 />
+        </CommandBar>
+    </Page.TopAppBar>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -25,7 +29,7 @@
                 <x:String>Date 4</x:String>
                 <x:String>Date 5</x:String>
             </ListView>
-            <ListView x:ConnectionId='2' Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center"                                                    >
+            <ListView x:ConnectionId='3' Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center"                                                    >
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
@@ -40,13 +44,13 @@
                 </ListView.HeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate                                  >
-                        <Grid x:ConnectionId='3' Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                        <Grid x:ConnectionId='4' Padding="12" Background="{ThemeResource SystemBaseLowColor}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="150"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock x:ConnectionId='4' Grid.Column="0"                      Style="{ThemeResource CaptionTextBlockStyle}"/>
-                            <TextBlock x:ConnectionId='5' Grid.Column="1"                             Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock x:ConnectionId='5' Grid.Column="0"                      Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            <TextBlock x:ConnectionId='6' Grid.Column="1"                             Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
