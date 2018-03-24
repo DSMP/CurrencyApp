@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="UWPUtils\CommandHandler.cs" />
+    <Compile Include="ViewModels\CurrencyHistoryViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="Views\CurrencyHistoryPage.xaml.cs">
       <DependentUpon>CurrencyHistoryPage.xaml</DependentUpon>

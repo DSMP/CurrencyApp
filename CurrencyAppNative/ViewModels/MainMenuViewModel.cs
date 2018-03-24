@@ -23,7 +23,7 @@ namespace CurrencyAppNative.ViewModels
         public ObservableCollection<string> Dates { get { return _dates; } internal set { SetProperty(ref _dates, value); } }
         public ICommand ExitCommand { get; }
         public string SelectedDate { get { return ""; } set { _DownloadAndAddCurrencies(value); } }
-        public Currency SelectedCurrency { get { return null; } set { _DownloadAndAddCurrencies(SelectedDate); } }
+        public Currency SelectedCurrency { get { return null; } set {/* _DownloadAndAddCurrencies(SelectedDate);*/ } }
         public MainMenuViewModel()
         {
             ExitCommand = new CommandHandler(() => Application.Current.Exit());

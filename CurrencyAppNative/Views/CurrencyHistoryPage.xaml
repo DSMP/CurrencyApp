@@ -8,7 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Page 2" HorizontalAlignment="Left" Margin="329,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Hub Header="{x:Bind ViewModel.Header}">
+            <!--<Hub.HeaderTemplate>                
+                <TextBlock HorizontalAlignment="Left" Text="Hstoria kursu " TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBlock Text="{x:Bind ViewModel.SelectedCurrency.Name, Mode=TwoWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            </Hub.HeaderTemplate>-->
+        </Hub>
 
     </Grid>
 </Page>

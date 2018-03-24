@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CurrencyAppNative.ViewModels;
+using CurrencyAppShared.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,13 @@ namespace CurrencyAppNative.Views
         public CurrencyHistoryPage()
         {
             this.InitializeComponent();
+            ViewModel = new CurrencyHistoryViewModel();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ViewModel.SelectedCurrency = (Currency)e.Parameter;
+        }
+        internal CurrencyHistoryViewModel ViewModel { get; }
     }
 }
