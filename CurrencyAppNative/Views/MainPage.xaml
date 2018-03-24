@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="CurrencyAppNative.MainPage"
+    x:Class="CurrencyAppNative.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CurrencyAppNative"
@@ -25,7 +25,7 @@
             <ListView Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible" 
                       ItemsSource="{x:Bind MainMenuViewModel.Dates, Mode=TwoWay}" 
                       HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top"
-                      SelectedItem="{x:Bind MainMenuViewModel.SelectedItem, Mode=TwoWay}">
+                      SelectedItem="{x:Bind MainMenuViewModel.SelectedDate, Mode=TwoWay}">
                 <ListView.Header>
                     <TextBlock Text="Date" TextAlignment="Center"/>
                 </ListView.Header>
@@ -35,7 +35,12 @@
                 <x:String>Date 4</x:String>
                 <x:String>Date 5</x:String>-->
             </ListView>
-            <ListView Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" ItemsSource="{x:Bind MainMenuViewModel.Currencies, Mode=TwoWay}">
+            <ListView Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" 
+                      ItemsSource="{x:Bind MainMenuViewModel.Currencies, Mode=TwoWay}"
+                      SelectedItem="{x:Bind MainMenuViewModel.SelectedCurrency}"
+                      IsItemClickEnabled="True"
+                      ItemClick="ListView_ItemClick">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">

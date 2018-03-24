@@ -288,3 +288,8 @@ C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\qualifiers.txt
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\qualifiers.txt.intermediate
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\ProjectArchitectures.txt
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.g.i.cs
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.g.cs
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.xaml
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.xbf
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\Views\CurrencyHistoryPage.xbf
