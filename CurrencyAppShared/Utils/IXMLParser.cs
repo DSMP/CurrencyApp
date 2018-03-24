@@ -7,6 +7,7 @@ namespace CurrencyAppShared.Utils
 {
     public interface IXMLParser
     {
-        IEnumerable GetCurrencies(string xmlFile);
+        IEnumerable ParseCurrencies(string xmlFile);
+        IEnumerable ParseDates(string xmlFile);
     }
 }

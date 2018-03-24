@@ -18,18 +18,21 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
-            <!--ItemsSource="{x:Bind MainMenuViewModel.CurrenciesDates}"-->
-            <ListView Grid.Column="0" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="800"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{x:Bind MainMenuViewModel.Dates, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top">
                 <ListView.Header>
                     <TextBlock Text="Date" TextAlignment="Center"/>
                 </ListView.Header>
-                <x:String>Date 1</x:String>
+                <!--<x:String>Date 1</x:String>
                 <x:String>Date 2</x:String>
                 <x:String>Date 3</x:String>
                 <x:String>Date 4</x:String>
-                <x:String>Date 5</x:String>
+                <x:String>Date 5</x:String>-->
             </ListView>
-            <ListView Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" ItemsSource="{x:Bind MainMenuViewModel.Currencies, Mode=TwoWay}">
+            <ListView Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" ItemsSource="{x:Bind MainMenuViewModel.Currencies, Mode=TwoWay}">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">

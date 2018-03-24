@@ -13,7 +13,7 @@ namespace CurrencyAppShared.Utils
 {
     public class XMLParser : IXMLParser
     {
-        public IEnumerable GetCurrencies(string xmlFile)
+        public IEnumerable ParseCurrencies(string xmlFile)
         {
             XDocument loadedData =   XDocument.Parse(xmlFile);
             var Symbol = (from query in loadedData.Descendants("ArrayOfExchangeRatesTable").Elements("ExchangeRatesTable").Elements("Rates").Elements("Rate")
@@ -43,6 +43,15 @@ namespace CurrencyAppShared.Utils
                 Debug.WriteLine(ex.Message);
             }
             return returnObject;
+        }
+
+        public IEnumerable ParseDates(string xmlFile)
+        {
+            XDocument loadedData = XDocument.Parse(xmlFile);
+            var Dates = (from query in loadedData.Descendants("ArrayOfExchangeRatesTable").Elements("ExchangeRatesTable")
+                             //where query.Element() != null
+                         select query.Element("EffectiveDate").Value).ToList();
+            return Dates;
         }
     }
 }
