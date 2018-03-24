@@ -35,7 +35,6 @@ namespace CurrencyAppNative.ViewModels
             _xMLParser = new XMLParser();
             _DownloadAndAddCurrencies();
             _DownloadDates();
-            //getdeserializedData();
         }
 
         private async void _DownloadAndAddCurrencies(string apiPath="")
@@ -43,8 +42,6 @@ namespace CurrencyAppNative.ViewModels
             _xmlCurrencies = await _restService.GetDataAsync(apiPath);
             List<Currency> downloadedCurrencies = (List<Currency>)_xMLParser.ParseCurrencies(_xmlCurrencies);
             Currencies = new ObservableCollection<Currency>(downloadedCurrencies);
-            //XMLParser.DeserializeXMLFileToObject<CurrencyList>(_xml);
-            //Currencies.Add(downloadedCurrencies.ElementAt(0));
         }
 
         private async void _DownloadDates()
