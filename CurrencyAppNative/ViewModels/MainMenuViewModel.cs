@@ -16,7 +16,8 @@ namespace CurrencyAppNative.ViewModels
 {
     class MainMenuViewModel : ViewModelBase
     {
-        public ObservableCollection<Currency> Currencies { get; }
+        ObservableCollection<Currency> currencies;
+        public ObservableCollection<Currency> Currencies { get { return currencies; } internal set { SetProperty(ref currencies, value); } }
         public ICommand ExitCommand { get; }
         public MainMenuViewModel()
         {
@@ -25,11 +26,29 @@ namespace CurrencyAppNative.ViewModels
             Currencies.Add(new Currency { CurrencyVal = 5.43m, Name = "qwe" });
             Currencies.Add(new Currency { CurrencyVal = 3.43m, Name = "wer" });
             Currencies.Add(new Currency { CurrencyVal = 2.43m, Name = "rty" });
-            restService = new RestService("rates/a/chf/");
-            var a = restService.GetDataAsync("");
+            restService = new RestService("tables/a/");
+            xMLParser = new XMLParser();
+            responseMethod();
+            //getdeserializedData();
         }
 
+        private async void responseMethod()
+        {
+            _xml = await restService.GetDataAsync("");
+            List<Currency> downloadedCurrencies = (List<Currency>)xMLParser.GetCurrencies(_xml);
+            Currencies = new ObservableCollection<Currency>(downloadedCurrencies);
+            //XMLParser.DeserializeXMLFileToObject<CurrencyList>(_xml);
+            //Currencies.Add(downloadedCurrencies.ElementAt(0));
+        }
+
+        private void getdeserializedData()
+        {
+            
+        }
+
+        string _xml;
         IRestService restService;
+        IXMLParser xMLParser;
 
     }
 }

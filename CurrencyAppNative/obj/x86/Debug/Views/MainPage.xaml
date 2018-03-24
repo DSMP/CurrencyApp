@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
             <!--ItemsSource="{x:Bind MainMenuViewModel.CurrenciesDates}"-->
-            <ListView Grid.Column="0" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center">
+            <ListView Grid.Column="0" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Top">
                 <ListView.Header>
                     <TextBlock Text="Date" TextAlignment="Center"/>
                 </ListView.Header>
@@ -29,7 +29,7 @@
                 <x:String>Date 4</x:String>
                 <x:String>Date 5</x:String>
             </ListView>
-            <ListView x:ConnectionId='3' Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center"                                                    >
+            <ListView x:ConnectionId='3' Grid.Column="1" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center"                                                                 >
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
