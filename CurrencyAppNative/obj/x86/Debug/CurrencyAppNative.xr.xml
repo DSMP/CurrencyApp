@@ -44,6 +44,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="Header" />
       <RootProperty Name="HeaderTemplate" />
       <RootProperty Name="ItemTemplate" />

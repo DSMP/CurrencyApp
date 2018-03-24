@@ -22,7 +22,10 @@
                 <RowDefinition Height="800"/>
             </Grid.RowDefinitions>
 
-            <ListView Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{x:Bind MainMenuViewModel.Dates, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top">
+            <ListView Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      ItemsSource="{x:Bind MainMenuViewModel.Dates, Mode=TwoWay}" 
+                      HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top"
+                      SelectedItem="{x:Bind MainMenuViewModel.SelectedItem, Mode=TwoWay}">
                 <ListView.Header>
                     <TextBlock Text="Date" TextAlignment="Center"/>
                 </ListView.Header>

@@ -22,7 +22,10 @@
                 <RowDefinition Height="800"/>
             </Grid.RowDefinitions>
 
-            <ListView x:ConnectionId='3' Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible"                                                             HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top">
+            <ListView x:ConnectionId='3' Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                                                                                  
+                      HorizontalAlignment="Center" Margin="20" Width="120" VerticalAlignment="Top"
+                                                                                         >
                 <ListView.Header>
                     <TextBlock Text="Date" TextAlignment="Center"/>
                 </ListView.Header>
