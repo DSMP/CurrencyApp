@@ -22,7 +22,6 @@ namespace CurrencyAppNative.ViewModels
         ObservableCollection<string> _dates;
         public ObservableCollection<string> Dates { get { return _dates; } internal set { SetProperty(ref _dates, value); } }
         public ICommand ExitCommand { get; }
-        public ICommand DateSelectedCommand { get; }
         public string SelectedItem { get { return ""; } set { _DownloadAndAddCurrencies(value); } }
         public MainMenuViewModel()
         {
@@ -37,11 +36,6 @@ namespace CurrencyAppNative.ViewModels
             _DownloadAndAddCurrencies();
             _DownloadDates();
             //getdeserializedData();
-        }
-
-        public void DateSelected(object Sender, ItemClickEventArgs e)
-        {
-            int a = 2;
         }
 
         private async void _DownloadAndAddCurrencies(string apiPath="")
