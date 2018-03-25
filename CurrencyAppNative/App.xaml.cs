@@ -27,10 +27,21 @@ namespace CurrencyAppNative
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        Windows.Storage.ApplicationDataContainer localSettings;
+
         public App()
-        {
+        {           
             this.InitializeComponent();
+            localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             this.Suspending += OnSuspending;
+            this.Resuming += App_Resuming;
+        }
+
+        private void App_Resuming(object sender, object e)
+        {
+            int page = (int)localSettings.Values["Page"];
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(page == 1 ? typeof(MainPage) : typeof(CurrencyHistoryPage), true);
         }
 
         /// <summary>
@@ -58,6 +69,8 @@ namespace CurrencyAppNative
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+                int page = (int)localSettings.Values["Page"];
+                rootFrame.Navigate(page == 1 ? typeof(MainPage) : typeof(CurrencyHistoryPage), true);
             }
 
             if (e.PrelaunchActivated == false)

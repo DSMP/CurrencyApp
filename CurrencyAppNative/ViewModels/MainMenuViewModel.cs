@@ -22,10 +22,19 @@ namespace CurrencyAppNative.ViewModels
         ObservableCollection<string> _dates;
         public ObservableCollection<string> Dates { get { return _dates; } internal set { SetProperty(ref _dates, value); } }
         public ICommand ExitCommand { get; }
-        public string SelectedDate { get { return ""; } set { _DownloadAndAddCurrencies(value); } }
+        public string SelectedDate { get { return ""; } set {
+                _DownloadAndAddCurrencies(value);
+                localSettings.Values["date"] = value;
+            } }
         public Currency SelectedCurrency { get { return null; } set {/* _DownloadAndAddCurrencies(SelectedDate);*/ } }
+
+        Windows.Storage.ApplicationDataContainer localSettings;
+        Windows.Storage.ApplicationDataCompositeValue composite;
         public MainMenuViewModel()
         {
+            localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            composite = new Windows.Storage.ApplicationDataCompositeValue();
+            localSettings.Values["page"] = 1;
             ExitCommand = new CommandHandler(() => Application.Current.Exit());
             Currencies = new ObservableCollection<Currency>();
             Dates = new ObservableCollection<string>();
@@ -38,10 +47,32 @@ namespace CurrencyAppNative.ViewModels
             _DownloadDates();
         }
 
+        internal void Resume()
+        {
+            if (Dates.Count == 0)
+            {
+                _datesAreNotReady = true;
+            }
+            else
+            {
+                string userDate = (string)localSettings.Values["date"] ?? "";
+                try
+                {
+                    _DownloadAndAddCurrencies(userDate);
+                }
+                catch (Exception)
+                {
+                    _DownloadAndAddCurrencies(Dates.Last());
+                }                
+            }
+            
+        }
+
         private async void _DownloadAndAddCurrencies(string apiPath="")
         {
+            List<Currency> downloadedCurrencies = null;
             _xmlCurrencies = await _restService.GetDataAsync(apiPath);
-            List<Currency> downloadedCurrencies = (List<Currency>)_xMLParser.ParseCurrencies(_xmlCurrencies);
+            downloadedCurrencies = (List<Currency>)_xMLParser.ParseCurrencies(_xmlCurrencies);            
             Currencies = new ObservableCollection<Currency>(downloadedCurrencies);
         }
 
@@ -51,11 +82,21 @@ namespace CurrencyAppNative.ViewModels
             List<string> downloadedDates = (List<string>)_xMLParser.ParseDates(_xmlDates);
             downloadedDates.Reverse();
             Dates = new ObservableCollection<string>(downloadedDates);
+            if (_datesAreNotReady)
+            {
+                _datesAreNotReady = false;
+                Resume();
+            }
+        }
+
+        private void _safeComposite()
+        {
+            localSettings.Values["conposite"] = composite;
         }
 
         string _xmlCurrencies, _xmlDates;
         IRestService _restService;
         IXMLParser _xMLParser;
-
+        private bool _datesAreNotReady;
     }
 }

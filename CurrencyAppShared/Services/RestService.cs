@@ -33,7 +33,7 @@ namespace CurrencyAppShared.Services
             }
             catch (HttpRequestException)
             {
-                Debug.WriteLine("exception HttpRequestException");
+                Debug.WriteLine("exception HttpRequestException/No internet Connection");
             }
             if (response.IsSuccessStatusCode)
             {

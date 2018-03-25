@@ -31,6 +31,19 @@ namespace CurrencyAppNative.Views
             MainMenuViewModel = new MainMenuViewModel();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter.Equals(""))
+            {
+                return;
+            }
+            if ((bool)e.Parameter == true)
+            {
+                MainMenuViewModel.Resume();
+            }
+            
+        }
+
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(CurrencyHistoryPage), e.ClickedItem);

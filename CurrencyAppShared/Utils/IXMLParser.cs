@@ -9,5 +9,7 @@ namespace CurrencyAppShared.Utils
     {
         IEnumerable ParseCurrencies(string xmlFile);
         IEnumerable ParseDates(string xmlFile);
+        string ObjToXML<T>(T obj);
+        T DeserializeXMLFileToObject<T>(string xmlString);
     }
 }

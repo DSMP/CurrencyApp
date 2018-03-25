@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -25,11 +27,10 @@ namespace CurrencyAppShared.Utils
                          }).ToList();
             return Symbol;
         }
-        public static T DeserializeXMLFileToObject<T>(string xmlString)
+        public T DeserializeXMLFileToObject<T>(string xmlString)
         {
             T returnObject = default(T);
             if (string.IsNullOrEmpty(xmlString)) return default(T);
-            //xmlString = xmlString.Substring(38);
             try
             {
                 TextReader xmlStream = new StringReader(xmlString);
@@ -52,6 +53,22 @@ namespace CurrencyAppShared.Utils
                              //where query.Element() != null
                          select query.Element("EffectiveDate").Value).ToList();
             return Dates;
+        }
+
+        public string ObjToXML<T>(T obj)
+        {
+            var emptyNamepsaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+            var serializer = new XmlSerializer(obj.GetType());
+            var settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.OmitXmlDeclaration = true;
+
+            using (var stream = new StringWriter())
+            using (var writer = XmlWriter.Create(stream, settings))
+            {
+                serializer.Serialize(writer, obj, emptyNamepsaces);
+                return stream.ToString();
+            }
         }
     }
 }

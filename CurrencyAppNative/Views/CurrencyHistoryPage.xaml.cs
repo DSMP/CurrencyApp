@@ -32,7 +32,15 @@ namespace CurrencyAppNative.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel.SelectedCurrency = (Currency)e.Parameter;
+            if (Type.Equals(TypeCode.Boolean, Type.GetTypeCode(e.Parameter.GetType())))
+            {
+
+            }
+            else
+            {
+                ViewModel.SelectedCurrency = (Currency)e.Parameter;
+            }
+            
         }
         internal CurrencyHistoryViewModel ViewModel { get; }
     }
