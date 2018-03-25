@@ -50,7 +50,6 @@ namespace CurrencyAppShared.Utils
         {
             XDocument loadedData = XDocument.Parse(xmlFile);
             var Dates = (from query in loadedData.Descendants("ArrayOfExchangeRatesTable").Elements("ExchangeRatesTable")
-                             //where query.Element() != null
                          select query.Element("EffectiveDate").Value).ToList();
             return Dates;
         }

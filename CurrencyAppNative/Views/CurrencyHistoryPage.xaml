@@ -7,13 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub Header="{x:Bind ViewModel.Header}">
-            <!--<Hub.HeaderTemplate>                
-                <TextBlock HorizontalAlignment="Left" Text="Hstoria kursu " TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <TextBlock Text="{x:Bind ViewModel.SelectedCurrency.Name, Mode=TwoWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            </Hub.HeaderTemplate>-->
-        </Hub>
-
-    </Grid>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub Header="{x:Bind ViewModel.Header}"/>        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
+            <DatePicker Date="{x:Bind ViewModel.DateTimeStart, Mode=TwoWay}" Header="Start Date"/>
+            <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
+        </StackPanel>
+        <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}"/>
+        
+    </StackPanel>
 </Page>
