@@ -21,7 +21,7 @@
         </StackPanel>
         <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}" Maximum="{x:Bind ViewModel.MaxValue}"/>
         <Charting:Chart x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
-            <Charting:LineSeries Title="{x:Bind ViewModel.Header}" ItemsSource="{x:Bind ViewModel.currencies}" Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
+            <Charting:LineSeries Title="{x:Bind ViewModel.Header}" IsTextScaleFactorEnabled="True" ItemsSource="{x:Bind ViewModel.currencies}" Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
         </Charting:Chart>
 
     </StackPanel>

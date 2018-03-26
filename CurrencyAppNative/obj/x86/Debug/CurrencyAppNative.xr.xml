@@ -45,6 +45,7 @@
     </RootType>
     <RootType FullName="WinRTXamlToolkit.Controls.DataVisualization.Charting.LineSeries">
       <RootProperty Name="Title" />
+      <RootProperty Name="IsTextScaleFactorEnabled" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="Margin" />
       <RootProperty Name="IndependentValuePath" />

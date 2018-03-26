@@ -24,11 +24,29 @@ namespace CurrencyAppNative.Views
     /// </summary>
     public sealed partial class CurrencyHistoryPage : Page
     {
+        double _mouseX;
+
         public CurrencyHistoryPage()
         {
             this.InitializeComponent();
+            this.PointerPressed += Frame_PointerPressed;
+            this.PointerReleased += CurrencyHistoryPage_PointerReleased;
             ViewModel = new CurrencyHistoryViewModel();
         }
+
+        private void CurrencyHistoryPage_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            if (_mouseX < e.GetCurrentPoint(this).Position.X)
+            {
+                Back_Click(sender, e);
+            }
+        }
+
+        private void Frame_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            _mouseX = e.GetCurrentPoint(this).Position.X;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
