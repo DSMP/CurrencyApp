@@ -34,7 +34,7 @@ namespace CurrencyAppNative.Views
             base.OnNavigatedTo(e);
             if (Type.Equals(TypeCode.Boolean, Type.GetTypeCode(e.Parameter.GetType())))
             {
-
+                ViewModel.Resume();
             }
             else
             {

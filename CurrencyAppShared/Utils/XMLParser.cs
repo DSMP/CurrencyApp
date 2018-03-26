@@ -23,7 +23,7 @@ namespace CurrencyAppShared.Utils
                             select new Currency {
                              Name = (string)query.Element("Currency"),
                              Code = (string)query.Element("Code"),
-                             CurrencyVal = (Decimal)query.Element("Mid")
+                             CurrencyVal = (double)query.Element("Mid")
                          }).ToList();
             return Symbol;
         }
@@ -34,7 +34,7 @@ namespace CurrencyAppShared.Utils
                           select new Currency
                           {
                               Name = (string)query.Element("EffectiveDate"),
-                              CurrencyVal = (Decimal)query.Element("Mid")
+                              CurrencyVal = (double)query.Element("Mid")
                           }).ToList();
             return Symbol;
         }

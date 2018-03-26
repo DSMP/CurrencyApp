@@ -19,7 +19,7 @@
             <DatePicker x:ConnectionId='8'                                                      Header="Start Date"/>
             <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
         </StackPanel>
-        <ProgressBar x:ConnectionId='5' Height="50" Width="500"                                                 />
+        <ProgressBar x:ConnectionId='5' Height="50" Width="500"                                                                                       />
         <Charting:Chart x:ConnectionId='6' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
             <Charting:LineSeries x:ConnectionId='7'                                                                               Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
         </Charting:Chart>

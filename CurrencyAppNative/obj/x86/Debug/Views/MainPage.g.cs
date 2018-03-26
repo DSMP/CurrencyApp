@@ -203,7 +203,7 @@ namespace CurrencyAppNative.Views
                     XamlBindingSetters.Set_Windows_UI_Xaml_Controls_TextBlock_Text(this.obj6, obj, null);
                 }
             }
-            private void Update_CurrencyVal(global::System.Decimal obj, int phase)
+            private void Update_CurrencyVal(global::System.Double obj, int phase)
             {
                 if ((phase & ((1 << 0) | NOT_PHASED )) != 0)
                 {

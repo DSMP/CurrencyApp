@@ -38,9 +38,9 @@ namespace CurrencyAppNative.ViewModels
             ExitCommand = new CommandHandler(() => Application.Current.Exit());
             Currencies = new ObservableCollection<Currency>();
             Dates = new ObservableCollection<string>();
-            Currencies.Add(new Currency { CurrencyVal = 5.43m, Name = "qwe" });
-            Currencies.Add(new Currency { CurrencyVal = 3.43m, Name = "wer" });
-            Currencies.Add(new Currency { CurrencyVal = 2.43m, Name = "rty" });
+            Currencies.Add(new Currency { CurrencyVal = 5.43, Name = "qwe" });
+            Currencies.Add(new Currency { CurrencyVal = 3.43, Name = "wer" });
+            Currencies.Add(new Currency { CurrencyVal = 2.43, Name = "rty" });
             _restService = new RestService("tables/a/");
             _xMLParser = new XMLParser();
             _DownloadAndAddCurrencies();

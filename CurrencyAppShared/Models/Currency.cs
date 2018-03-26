@@ -14,6 +14,6 @@ namespace CurrencyAppShared.Models
         [XmlElement("Code")]
         public string Code { get; set; }
         [XmlElement("CurrencyVal")]
-        public Decimal CurrencyVal { get; set; }
+        public double CurrencyVal { get; set; }
     }
 }
