@@ -21,9 +21,13 @@
         </StackPanel>
         <ProgressBar x:ConnectionId='5' Height="50" Width="500"                                                                                       />
         <Charting:Chart x:ConnectionId='6' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
-            <Charting:LineSeries x:ConnectionId='7'                                   IsTextScaleFactorEnabled="True"                                             Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
+            <Charting:LineSeries x:ConnectionId='7' x:Name="ChartLine"                                   IsTextScaleFactorEnabled="True"                                             Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
         </Charting:Chart>
-
     </StackPanel>
+    <Page.BottomAppBar>
+        <CommandBar>            
+            <AppBarButton x:ConnectionId='10' Icon="Save"                                              />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
 

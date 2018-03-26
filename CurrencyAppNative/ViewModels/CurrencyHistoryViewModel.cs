@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Data;
 
 namespace CurrencyAppNative.ViewModels
@@ -77,6 +79,7 @@ namespace CurrencyAppNative.ViewModels
         Windows.Storage.ApplicationDataContainer localsettings;
         IXMLParser _xMLParser;
         IRestService _restService;
+        public ICommand WriteFileCommand { get; set; }
         public ObservableCollection<Currency> currencies;
 
         public CurrencyHistoryViewModel()
@@ -87,6 +90,7 @@ namespace CurrencyAppNative.ViewModels
             _dateTimeFinish = DateTimeOffset.Parse((string)localsettings.Values["firstDate"]);
             _restService = new RestService("rates/a/");
             _xMLParser = new XMLParser();
+            WriteFileCommand = new CommandHandler(() => WriteFileAsync());
             currencies = new ObservableCollection<Currency>();
             localsettings.Values["page"] = 2;
             if (localsettings.Values["selected_currency"] == null)
@@ -129,6 +133,24 @@ namespace CurrencyAppNative.ViewModels
                 currencies.Add(data.ElementAt(i));
             }
 
+        }
+        public async void WriteFileAsync()
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            savePicker.FileTypeChoices.Add("Picture", new List<string>() { ".jpg" });
+            // Default file name if the user does not type one in or select a file to replace
+            savePicker.SuggestedFileName = "New Diagram";
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                Windows.Storage.CachedFileManager.DeferUpdates(file);
+             
+                await Windows.Storage.FileIO.WriteTextAsync(file, file.Name);
+
+                Windows.Storage.Provider.FileUpdateStatus status =
+                    await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+            }
         }
 
         private void Currencies_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
