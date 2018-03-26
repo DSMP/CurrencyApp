@@ -5,16 +5,20 @@
     xmlns:local="using:CurrencyAppNative.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub x:ConnectionId='2'                                   >
-            <!--<Hub.HeaderTemplate>                
-                <TextBlock HorizontalAlignment="Left" Text="Hstoria kursu " TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <TextBlock Text="{x:Bind ViewModel.SelectedCurrency.Name, Mode=TwoWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            </Hub.HeaderTemplate>-->
-        </Hub>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub x:ConnectionId='2'                                   />        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
+            <DatePicker x:ConnectionId='5'                                                      Header="Start Date"/>
+            <DatePicker x:ConnectionId='6'                                                       Header="Finish Date"/>
+        </StackPanel>
+        <ProgressBar x:ConnectionId='3' Height="50" Width="500"                                                 />
+        <Charting:Chart x:ConnectionId='4' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
+            <Charting:LineSeries Title="Smartphone Companies" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+        </Charting:Chart>
 
-    </Grid>
+    </StackPanel>
 </Page>
 

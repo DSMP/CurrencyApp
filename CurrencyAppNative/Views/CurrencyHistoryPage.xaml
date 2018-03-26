@@ -5,8 +5,13 @@
     xmlns:local="using:CurrencyAppNative.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     mc:Ignorable="d">
-
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Back" Command="{x:Bind ViewModel.BackCommand}"/>
+        </CommandBar>
+    </Page.TopAppBar>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub Header="{x:Bind ViewModel.Header}"/>        
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
@@ -14,6 +19,9 @@
             <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
         </StackPanel>
         <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}"/>
-        
+        <Charting:Chart x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
+            <Charting:LineSeries Title="{x:Bind ViewModel.Header}" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+        </Charting:Chart>
+
     </StackPanel>
 </Page>

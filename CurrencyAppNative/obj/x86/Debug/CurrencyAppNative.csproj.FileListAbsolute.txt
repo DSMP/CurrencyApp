@@ -293,3 +293,8 @@ C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyH
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.xaml
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\Views\CurrencyHistoryPage.xbf
 C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\Views\CurrencyHistoryPage.xbf
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\WinRTXamlToolkit.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\WinRTXamlToolkit.Controls.DataVisualization.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\WinRTXamlToolkit.Controls.DataVisualization\en-US\WinRTXamlToolkit.Controls.DataVisualization.Properties.Resources.resw
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\WinRTXamlToolkit.pri.xml
+C:\GitProjects\CurrencyAppNative\CurrencyAppNative\obj\x86\Debug\WinRTXamlToolkit.Controls.DataVisualization.pri.xml
