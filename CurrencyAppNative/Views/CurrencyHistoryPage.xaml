@@ -9,7 +9,8 @@
     mc:Ignorable="d">
     <Page.TopAppBar>
         <CommandBar>
-            <AppBarButton Icon="Back" Command="{x:Bind ViewModel.BackCommand}"/>
+            <AppBarButton HorizontalAlignment="Left" Icon="Back" Click="Back_Click"/>
+            <AppBarButton HorizontalAlignment="Left" Icon="Cancel" Click="Exit_Click" />
         </CommandBar>
     </Page.TopAppBar>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

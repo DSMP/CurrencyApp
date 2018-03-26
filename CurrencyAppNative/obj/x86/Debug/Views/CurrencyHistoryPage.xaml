@@ -7,16 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     mc:Ignorable="d">
-
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='2' HorizontalAlignment="Left" Icon="Back"                    Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+            <AppBarButton x:ConnectionId='3' HorizontalAlignment="Left" Icon="Cancel"                    />
+        </CommandBar>
+    </Page.TopAppBar>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub x:ConnectionId='2'                                   />        
+        <Hub x:ConnectionId='4'                                   />        
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
-            <DatePicker x:ConnectionId='5'                                                      Header="Start Date"/>
-            <DatePicker x:ConnectionId='6'                                                       Header="Finish Date"/>
+            <DatePicker x:ConnectionId='8'                                                      Header="Start Date"/>
+            <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
         </StackPanel>
-        <ProgressBar x:ConnectionId='3' Height="50" Width="500"                                                 />
-        <Charting:Chart x:ConnectionId='4' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
-            <Charting:LineSeries Title="Smartphone Companies" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+        <ProgressBar x:ConnectionId='5' Height="50" Width="500"                                                 />
+        <Charting:Chart x:ConnectionId='6' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
+            <Charting:LineSeries x:ConnectionId='7'                                   Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
         </Charting:Chart>
 
     </StackPanel>

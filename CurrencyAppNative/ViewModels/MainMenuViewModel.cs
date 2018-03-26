@@ -87,6 +87,8 @@ namespace CurrencyAppNative.ViewModels
                 _datesAreNotReady = false;
                 Resume();
             }
+            localSettings.Values["firstDate"] = Dates.First();
+            localSettings.Values["lastDate"] = Dates.Last();
         }
 
         private void _safeComposite()

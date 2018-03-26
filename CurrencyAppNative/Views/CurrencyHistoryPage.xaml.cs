@@ -43,5 +43,15 @@ namespace CurrencyAppNative.Views
             
         }
         internal CurrencyHistoryViewModel ViewModel { get; }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage), "");
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }

@@ -18,9 +18,9 @@ namespace CurrencyAppNative.ViewModels
         string _header;
         public string Header { get { return _header == null ? "Historia kursu " + _selectedCurrency.Name : _header; } set { SetProperty(ref _header, value); } }
         DateTimeOffset _dateTimeStart;
-        public DateTimeOffset DateTimeStart { get { return _dateTimeStart; } set { SetProperty(ref _dateTimeStart, value); } }
+        public DateTimeOffset DateTimeStart { get { return _dateTimeStart.Equals(DateTimeOffset.MinValue) ? new DateTimeOffset(DateTime.Parse((string)localsettings.Values["lastDate"])) : _dateTimeStart; } set { SetProperty(ref _dateTimeStart, value); } }
         DateTimeOffset _dateTimeFinish;
-        public DateTimeOffset DateTimeFinish { get { return _dateTimeFinish; } set { SetProperty(ref _dateTimeFinish, value); } }
+        public DateTimeOffset DateTimeFinish { get { return _dateTimeFinish.Equals(DateTimeOffset.MinValue) ? new DateTimeOffset(DateTime.Parse((string)localsettings.Values["firstDate"])) : _dateTimeStart; } set { SetProperty(ref _dateTimeFinish, value); } }
         double _progress;
         public double Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
         Windows.Storage.StorageFolder localFolder;
