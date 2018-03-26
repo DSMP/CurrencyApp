@@ -20,8 +20,8 @@
             <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
         </StackPanel>
         <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}"/>
-        <Charting:Chart x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
-            <Charting:LineSeries Title="{x:Bind ViewModel.Header}" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+        <Charting:Chart x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
+            <Charting:LineSeries Title="{x:Bind ViewModel.Header}" ItemsSource="{x:Bind ViewModel.currencies}" Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
         </Charting:Chart>
 
     </StackPanel>

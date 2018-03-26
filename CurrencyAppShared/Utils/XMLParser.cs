@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -17,9 +18,8 @@ namespace CurrencyAppShared.Utils
     {
         public IEnumerable ParseCurrencies(string xmlFile)
         {
-            XDocument loadedData =   XDocument.Parse(xmlFile);
+            XDocument loadedData = XDocument.Parse(xmlFile);
             var Symbol = (from query in loadedData.Descendants("ArrayOfExchangeRatesTable").Elements("ExchangeRatesTable").Elements("Rates").Elements("Rate")
-                         //where query.Element() != null
                             select new Currency {
                              Name = (string)query.Element("Currency"),
                              Code = (string)query.Element("Code"),
@@ -27,6 +27,31 @@ namespace CurrencyAppShared.Utils
                          }).ToList();
             return Symbol;
         }
+        public IEnumerable ParseCurrentCurrencies(string xmlFile)
+        {
+            XDocument loadedData = XDocument.Parse(xmlFile);
+            var Symbol = (from query in loadedData.Descendants("ExchangeRatesSeries").Elements("Rates").Elements("Rate")
+                          select new Currency
+                          {
+                              Name = (string)query.Element("EffectiveDate"),
+                              CurrencyVal = (Decimal)query.Element("Mid")
+                          }).ToList();
+            return Symbol;
+        }
+        //public Task<Currency> ParseCurrentCurrencies(string xmlFile)
+        //{
+        //    XDocument loadedData = XDocument.Parse(xmlFile);
+        //    var data = loadedData.Descendants("ExchangeRatesSeries").Elements("Rates");
+        //    for (int i = 0; i < data.Count(); i++)
+        //    {
+        //        return Task.Factory.StartNew<Currency>(() =>
+        //        {
+        //            TextReader xmlStream = new StringReader(data.ElementAt(i).ToString());
+        //            XmlSerializer serializer = new XmlSerializer(typeof(Currency));
+        //            return serializer.Deserialize(xmlStream);
+        //        }).Start();
+        //    }
+        //}
         public T DeserializeXMLFileToObject<T>(string xmlString)
         {
             T returnObject = default(T);

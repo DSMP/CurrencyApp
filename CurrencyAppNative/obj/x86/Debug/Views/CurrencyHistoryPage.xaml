@@ -9,7 +9,7 @@
     mc:Ignorable="d">
     <Page.TopAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='2' HorizontalAlignment="Left" Icon="Back"                    Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+            <AppBarButton x:ConnectionId='2' HorizontalAlignment="Left" Icon="Back"                   />
             <AppBarButton x:ConnectionId='3' HorizontalAlignment="Left" Icon="Cancel"                    />
         </CommandBar>
     </Page.TopAppBar>
@@ -20,8 +20,8 @@
             <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
         </StackPanel>
         <ProgressBar x:ConnectionId='5' Height="50" Width="500"                                                 />
-        <Charting:Chart x:ConnectionId='6' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="600" Height="400">
-            <Charting:LineSeries x:ConnectionId='7'                                   Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+        <Charting:Chart x:ConnectionId='6' x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
+            <Charting:LineSeries x:ConnectionId='7'                                                                               Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
         </Charting:Chart>
 
     </StackPanel>

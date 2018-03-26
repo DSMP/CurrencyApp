@@ -14,11 +14,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Icon" />
-      <RootProperty Name="Style" />
       <RootProperty Name="Command" />
       <RootEvent Name="Click" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Background" />
       <RootProperty Name="Children" />
@@ -46,6 +44,7 @@
     </RootType>
     <RootType FullName="WinRTXamlToolkit.Controls.DataVisualization.Charting.LineSeries">
       <RootProperty Name="Title" />
+      <RootProperty Name="ItemsSource" />
       <RootProperty Name="Margin" />
       <RootProperty Name="IndependentValuePath" />
       <RootProperty Name="DependentValuePath" />

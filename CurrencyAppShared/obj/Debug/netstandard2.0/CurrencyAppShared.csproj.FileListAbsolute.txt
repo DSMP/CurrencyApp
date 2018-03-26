@@ -6,3 +6,4 @@ C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\Curr
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.AssemblyInfo.cs
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.dll
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.pdb
+C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.csprojResolveAssemblyReference.cache
