@@ -25,7 +25,18 @@ namespace CurrencyAppNative.ViewModels
     class CurrencyHistoryViewModel : ViewModelBase
     {
         Currency _selectedCurrency;
-        public Currency SelectedCurrency { get { return _selectedCurrency; } set { SetProperty(ref _selectedCurrency, value); localsettings.Values["selected_currency"] = _xMLParser.ObjToXML<Currency>(value); } }
+        public Currency SelectedCurrency
+        {
+            get
+            {
+                return _selectedCurrency;
+            }
+            set
+            {
+                SetProperty(ref _selectedCurrency, value);
+                localsettings.Values["selected_currency"] = _xMLParser.ObjToXML<Currency>(value);
+            }
+        }
         string _header;
         public string Header { get { return _header == null ? "Historia kursu " + _selectedCurrency.Name : _header; } set { SetProperty(ref _header, value); } }
         DateTimeOffset _dateTimeStart;
@@ -39,6 +50,7 @@ namespace CurrencyAppNative.ViewModels
             {
                 if (_dontUpdateTwice)
                 {
+                    SetProperty(ref _dateTimeStart, value);
                     _dontUpdateTwice = false;
                     return;
                 }
@@ -56,6 +68,8 @@ namespace CurrencyAppNative.ViewModels
                 }
                 else
                 {
+                    SetProperty(ref _dateTimeStart, value);
+                    localsettings.Values["startUserDate"] = value;
                     _downloadCurrentCurrency();
                     Progress = 0;
                 }
@@ -75,6 +89,7 @@ namespace CurrencyAppNative.ViewModels
             {
                 if (_dontUpdateTwice)
                 {
+                    SetProperty(ref _dateTimeFinish, value);
                     _dontUpdateTwice = false;
                     return;
                 }
@@ -92,6 +107,8 @@ namespace CurrencyAppNative.ViewModels
                 }
                 else
                 {
+                    SetProperty(ref _dateTimeFinish, value);
+                    localsettings.Values["finishUserDate"] = value;
                     _downloadCurrentCurrency();
                     Progress = 0;
                 }
@@ -143,12 +160,13 @@ namespace CurrencyAppNative.ViewModels
                 var obj = _xMLParser.DeserializeXMLFileToObject<Currency>((string)localsettings.Values["selected_currency"]);
                 SelectedCurrency = obj;
             }
-            _downloadCurrentCurrency();
         }
 
         internal void Resume()
         {
+            _dontUpdateTwice = true;
             DateTimeStart = (DateTimeOffset)localsettings.Values["startUserDate"];// ?? DateTimeOffset.Parse((string)localsettings.Values["lastDate"]));
+            _dontUpdateTwice = true;
             DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"];//?? (string)localsettings.Values["firstDate"]);
             _downloadCurrentCurrency();
         }

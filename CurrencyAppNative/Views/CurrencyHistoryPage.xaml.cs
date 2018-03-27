@@ -66,6 +66,7 @@ namespace CurrencyAppNative.Views
             else
             {
                 ViewModel.SelectedCurrency = (Currency)e.Parameter;
+                ViewModel.Resume();
             }
             
         }
