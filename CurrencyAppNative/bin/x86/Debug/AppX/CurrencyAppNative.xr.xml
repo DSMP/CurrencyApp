@@ -37,21 +37,35 @@
       <RootProperty Name="Value" />
       <RootProperty Name="Maximum" />
     </RootType>
-    <RootType FullName="WinRTXamlToolkit.Controls.DataVisualization.Charting.Chart">
+    <RootType FullName="Syncfusion.UI.Xaml.Charts.SfChart">
       <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="PrimaryAxis" />
+      <RootProperty Name="SecondaryAxis" />
+      <RootProperty Name="Behaviors" />
       <RootProperty Name="Series" />
     </RootType>
-    <RootType FullName="WinRTXamlToolkit.Controls.DataVisualization.Charting.LineSeries">
-      <RootProperty Name="Title" />
-      <RootProperty Name="IsTextScaleFactorEnabled" />
-      <RootProperty Name="ItemsSource" />
+    <RootType FullName="Syncfusion.UI.Xaml.Charts.CategoryAxis">
+      <RootProperty Name="ShowGridLines" />
+      <RootProperty Name="LabelFormat" />
+      <RootProperty Name="Header" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Margin" />
-      <RootProperty Name="IndependentValuePath" />
-      <RootProperty Name="DependentValuePath" />
-      <RootProperty Name="IsSelectionEnabled" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="TextAlignment" />
+    </RootType>
+    <RootType FullName="Syncfusion.UI.Xaml.Charts.NumericalAxis">
+      <RootProperty Name="RangePadding" />
+      <RootProperty Name="Header" />
+    </RootType>
+    <RootType FullName="Syncfusion.UI.Xaml.Charts.ChartZoomPanBehavior" />
+    <RootType FullName="Syncfusion.UI.Xaml.Charts.FastLineBitmapSeries">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="XBindingPath" />
+      <RootProperty Name="YBindingPath" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Mode" />
@@ -95,11 +109,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Text" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="TextAlignment" />
     </RootType>
     <RootType FullName="CurrencyAppNative.Views.MainPage" />
   </Roots.RootTypes>

@@ -140,7 +140,7 @@ namespace CurrencyAppNative.ViewModels
         {
             FileSavePicker savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            MemoryStream ms = await Composition.WriteableBitmapRenderExtensions.RenderToPngStream(Chart);
+            //MemoryStream ms = await Composition.WriteableBitmapRenderExtensions.RenderToPngStream(Chart);
             savePicker.FileTypeChoices.Add("Picture", new List<string>() { ".jpg" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Diagram";
