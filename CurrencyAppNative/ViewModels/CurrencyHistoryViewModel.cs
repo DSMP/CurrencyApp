@@ -18,6 +18,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Data;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using System.Threading;
+using Windows.UI.Core;
 
 namespace CurrencyAppNative.ViewModels
 {
@@ -118,6 +119,8 @@ namespace CurrencyAppNative.ViewModels
 
         public ObservableCollection<Currency> Currencies { get { return _currencies; } set { SetProperty(ref _currencies, value); } }
         public Views.CurrencyHistoryPage PageContext { get; set; }
+        public CoreDispatcher DispatcherApp { get; internal set; }
+
         public delegate void BarDelegate();
 
         public CurrencyHistoryViewModel()
@@ -156,6 +159,7 @@ namespace CurrencyAppNative.ViewModels
             //localsettings.Values["currentCurrencies"] = downloadedRates;
             //currencies = new List<Currency>(_xMLParser.ParseCurrentCurrencies(downloadedRates));
             //ThreadPool.QueueUserWorkItem(new WaitCallback(_parseData), downloadedRates);
+            //new System.Threading.ManualResetEvent(false).WaitOne(50);
             _parseData(downloadedRates);
         }
         private async void _parseData(object downloadedRates)
@@ -164,24 +168,23 @@ namespace CurrencyAppNative.ViewModels
             MaxValue = data.Count;
             ObservableCollection<Currency> newCurrencies = new ObservableCollection<Currency>();
             //currencies.CollectionChanged += Currencies_CollectionChanged;
-            newCurrencies.CollectionChanged += Currencies_CollectionChanged;
-            await PageContext.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
-             {
-                 Progress = 0;
-                 for (int i = 0; i < data.Count; i++)
-                 {
-                     //Progressss++;
-                     newCurrencies.Add(data.ElementAt(i));
-                     //new System.Threading.ManualResetEvent(false).WaitOne(10);
-                 }
-             }));
+            await Task.Factory.StartNew(async () =>
+            {
+                Progress = 0;
+                for (int i = 0; i < data.Count; i++)
+                {
+                    new System.Threading.ManualResetEvent(false).WaitOne(50);
+                    await DispatcherApp.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
+                    {
+                        Progress++;
+                        newCurrencies.Add(data.ElementAt(i));
+
+                    }));
+                }
+
+            });
             Currencies.Clear();
             Currencies = newCurrencies;
-        }
-
-        private void Currencies_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            Progress++;
         }
     }
 }

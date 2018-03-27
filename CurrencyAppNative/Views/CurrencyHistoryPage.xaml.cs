@@ -19,6 +19,7 @@ using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using Windows.Graphics.Imaging;
 using Windows.Graphics.Display;
 using Windows.Storage.Pickers;
+using Windows.ApplicationModel.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,7 +38,7 @@ namespace CurrencyAppNative.Views
             this.PointerPressed += Frame_PointerPressed;
             this.PointerReleased += CurrencyHistoryPage_PointerReleased;
             ProgressBar.Value = 0;
-            ViewModel = new CurrencyHistoryViewModel();
+            ViewModel = new CurrencyHistoryViewModel();            
         }
 
         private void CurrencyHistoryPage_PointerReleased(object sender, PointerRoutedEventArgs e)
@@ -57,6 +58,7 @@ namespace CurrencyAppNative.Views
         {
             base.OnNavigatedTo(e);
             ViewModel.PageContext = this;
+            ViewModel.DispatcherApp = CoreApplication.MainView.CoreWindow.Dispatcher;
             if (Type.Equals(TypeCode.Boolean, Type.GetTypeCode(e.Parameter.GetType())))
             {
                 ViewModel.Resume();
