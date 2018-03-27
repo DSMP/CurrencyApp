@@ -162,12 +162,15 @@ namespace CurrencyAppNative.ViewModels
             }
         }
 
-        internal void Resume()
+        internal void Resume(bool freshStart)
         {
-            _dontUpdateTwice = true;
-            DateTimeStart = (DateTimeOffset)localsettings.Values["startUserDate"];// ?? DateTimeOffset.Parse((string)localsettings.Values["lastDate"]));
-            _dontUpdateTwice = true;
-            DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"];//?? (string)localsettings.Values["firstDate"]);
+            if (!freshStart)
+            {
+                _dontUpdateTwice = true;
+                DateTimeStart = (DateTimeOffset)localsettings.Values["startUserDate"];
+                _dontUpdateTwice = true;
+                DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"]; 
+            }
             _downloadCurrentCurrency();
         }
 

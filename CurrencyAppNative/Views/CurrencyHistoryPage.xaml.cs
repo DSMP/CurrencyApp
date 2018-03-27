@@ -61,12 +61,12 @@ namespace CurrencyAppNative.Views
             ViewModel.DispatcherApp = CoreApplication.MainView.CoreWindow.Dispatcher;
             if (Type.Equals(TypeCode.Boolean, Type.GetTypeCode(e.Parameter.GetType())))
             {
-                ViewModel.Resume();
+                ViewModel.Resume(false);
             }
             else
             {
                 ViewModel.SelectedCurrency = (Currency)e.Parameter;
-                ViewModel.Resume();
+                ViewModel.Resume(true);
             }
             
         }

@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-27T20:29:26.942</Modified>
+      <Modified>2018-03-27T20:34:36.890</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\CurrencyAppNative.exe">
       <PackagePath>entrypoint\CurrencyAppNative.exe</PackagePath>
-      <Modified>2018-03-27T20:29:24.816</Modified>
+      <Modified>2018-03-27T20:34:34.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Syncfusion\Essential Studio\16.1.0.24\Universal Windows\10.0\SDK\References\CommonConfiguration\neutral\Syncfusion.Calculate.UWP.dll">
       <PackagePath>Syncfusion.Calculate.UWP.dll</PackagePath>
@@ -5288,11 +5288,11 @@
     <AppxPackagedFile Include="C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-27T20:29:26.088</Modified>
+      <Modified>2018-03-27T20:34:36.043</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\GitProjects\CurrencyAppNative\CurrencyAppNative\bin\x86\Debug\Core\CurrencyAppNative.exe">
       <PackagePath>CurrencyAppNative.exe</PackagePath>
-      <Modified>2018-03-27T20:29:26.937</Modified>
+      <Modified>2018-03-27T20:34:36.883</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
