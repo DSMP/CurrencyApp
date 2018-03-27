@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Data;
+using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 namespace CurrencyAppNative.ViewModels
 {
@@ -138,6 +140,7 @@ namespace CurrencyAppNative.ViewModels
         {
             FileSavePicker savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            MemoryStream ms = await Composition.WriteableBitmapRenderExtensions.RenderToPngStream(Chart);
             savePicker.FileTypeChoices.Add("Picture", new List<string>() { ".jpg" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Diagram";
