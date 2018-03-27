@@ -39,6 +39,7 @@
     </RootType>
     <RootType FullName="Syncfusion.UI.Xaml.Charts.SfChart">
       <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
       <RootProperty Name="PrimaryAxis" />
       <RootProperty Name="SecondaryAxis" />
       <RootProperty Name="Behaviors" />
