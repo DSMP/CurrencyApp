@@ -36,6 +36,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Value" />
       <RootProperty Name="Maximum" />
+      <RootProperty Name="Minimum" />
     </RootType>
     <RootType FullName="Syncfusion.UI.Xaml.Charts.SfChart">
       <RootProperty Name="Margin" />

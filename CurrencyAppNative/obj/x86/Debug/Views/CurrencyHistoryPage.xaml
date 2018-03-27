@@ -1,0 +1,53 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="CurrencyAppNative.Views.CurrencyHistoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    mc:Ignorable="d">
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='2' HorizontalAlignment="Left" Icon="Back"                   />
+            <AppBarButton x:ConnectionId='3' HorizontalAlignment="Left" Icon="Cancel"                    />
+        </CommandBar>
+    </Page.TopAppBar>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub x:ConnectionId='4'                                   />        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
+            <DatePicker x:ConnectionId='8'                                                      Header="Start Date"/>
+            <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
+        </StackPanel>
+        <ProgressBar x:ConnectionId='5' x:Name="ProgressBar" Height="50" Width="500"                                                                                                     Minimum="0"/>
+        <chart:SfChart x:ConnectionId='6' x:Name="lineChart" Margin="10" Background="White">
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis ShowGridLines="False">
+                    <chart:CategoryAxis.Header>
+                        <TextBlock Margin="10" Text="Dates" FontSize="14" FontFamily="SegoeUI"/>
+                    </chart:CategoryAxis.Header>
+                </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis RangePadding="Round" >
+                    <chart:NumericalAxis.Header>
+                        <TextBlock Margin="14" Text="Currency" FontSize="16" FontFamily="SegoeUI"/>
+                    </chart:NumericalAxis.Header>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Behaviors>
+                <chart:ChartZoomPanBehavior/>
+            </chart:SfChart.Behaviors>
+
+            <chart:FastLineBitmapSeries x:ConnectionId='7'                                                          XBindingPath="Name" YBindingPath="CurrencyVal"/>
+        </chart:SfChart>
+    </StackPanel>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='10' Icon="Save"                        />
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
+

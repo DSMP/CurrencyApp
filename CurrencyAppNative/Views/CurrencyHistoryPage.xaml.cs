@@ -36,6 +36,7 @@ namespace CurrencyAppNative.Views
             this.InitializeComponent();
             this.PointerPressed += Frame_PointerPressed;
             this.PointerReleased += CurrencyHistoryPage_PointerReleased;
+            ProgressBar.Value = 0;
             ViewModel = new CurrencyHistoryViewModel();
         }
 
@@ -55,6 +56,7 @@ namespace CurrencyAppNative.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            ViewModel.PageContext = this;
             if (Type.Equals(TypeCode.Boolean, Type.GetTypeCode(e.Parameter.GetType())))
             {
                 ViewModel.Resume();

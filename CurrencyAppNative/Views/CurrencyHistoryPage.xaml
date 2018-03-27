@@ -18,7 +18,7 @@
             <DatePicker Date="{x:Bind ViewModel.DateTimeStart, Mode=TwoWay}" Header="Start Date"/>
             <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
         </StackPanel>
-        <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}" Maximum="{x:Bind ViewModel.MaxValue}"/>
+        <ProgressBar x:Name="ProgressBar" Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}" Maximum="{x:Bind ViewModel.MaxValue, Mode=TwoWay}" Minimum="0"/>
         <chart:SfChart x:Name="lineChart" Margin="10" Background="White">
 
             <chart:SfChart.PrimaryAxis>
@@ -41,7 +41,7 @@
                 <chart:ChartZoomPanBehavior/>
             </chart:SfChart.Behaviors>
 
-            <chart:FastLineBitmapSeries ItemsSource="{x:Bind ViewModel.currencies}" XBindingPath="Name" YBindingPath="CurrencyVal"/>
+            <chart:FastLineBitmapSeries ItemsSource="{x:Bind ViewModel.Currencies, Mode=TwoWay}" XBindingPath="Name" YBindingPath="CurrencyVal"/>
         </chart:SfChart>
     </StackPanel>
     <Page.BottomAppBar>

@@ -6,17 +6,18 @@ using CurrencyAppShared.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Data;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
+using System.Threading;
 
 namespace CurrencyAppNative.ViewModels
 {
@@ -35,17 +36,29 @@ namespace CurrencyAppNative.ViewModels
             }
             set
             {
+                if (_dontUpdateTwice)
+                {
+                    _dontUpdateTwice = false;
+                    return;
+                }
                 if (value >= DateTimeFinish)
                 {
+                    _dontUpdateTwice = true;
                     value = _dateTimeFinish.AddDays(-1);
                 }
+                else
                 if (value < DateTimeOffset.Parse((string)localsettings.Values["lastDate"]))
                 {
+                    _dontUpdateTwice = true;
                     value = _dateTimeStart;
                     _dateTimeStart = DateTimeOffset.MinValue;
                 }
+                else
+                {
+                    _downloadCurrentCurrency();
+                    Progress = 0;
+                }
                 SetProperty(ref _dateTimeStart, value);
-                _downloadCurrentCurrency();
                 localsettings.Values["startUserDate"] = value;
             }
         }
@@ -59,29 +72,53 @@ namespace CurrencyAppNative.ViewModels
             }
             set
             {
+                if (_dontUpdateTwice)
+                {
+                    _dontUpdateTwice = false;
+                    return;
+                }
                 if (value <= DateTimeStart)
                 {
+                    _dontUpdateTwice = true;
                     value = _dateTimeStart.AddDays(1);
                 }
+                else
                 if (value > DateTimeOffset.Parse((string)localsettings.Values["firstDate"]))
                 {
+                    _dontUpdateTwice = true;
                     value = _dateTimeFinish;
                     _dateTimeFinish = DateTimeOffset.MinValue;
                 }
+                else
+                {
+                    _downloadCurrentCurrency();
+                    Progress = 0;
+                }
                 SetProperty(ref _dateTimeFinish, value);
-                _downloadCurrentCurrency();
                 localsettings.Values["finishUserDate"] = value;
             }
         }
-        int _progress;
-        public int Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
-        int _maxValue;
-        public int MaxValue { get { return _maxValue; } set { SetProperty(ref _maxValue, value); } }
+        double _progressss;
+        public double Progress
+        {
+            get { return _progressss; }
+            set
+            {
+                SetProperty(ref _progressss, value);
+            }
+        }
+        double _maxValue;
+        public double MaxValue { get { return _maxValue; } set { SetProperty(ref _maxValue, value); } }
         Windows.Storage.StorageFolder localFolder;
         Windows.Storage.ApplicationDataContainer localsettings;
         IXMLParser _xMLParser;
         IRestService _restService;
-        public ObservableCollection<Currency> currencies;
+        ObservableCollection<Currency> _currencies;
+        private bool _dontUpdateTwice;
+
+        public ObservableCollection<Currency> Currencies { get { return _currencies; } set { SetProperty(ref _currencies, value); } }
+        public Views.CurrencyHistoryPage PageContext { get; set; }
+        public delegate void BarDelegate();
 
         public CurrencyHistoryViewModel()
         {
@@ -91,7 +128,7 @@ namespace CurrencyAppNative.ViewModels
             _dateTimeFinish = DateTimeOffset.Parse((string)localsettings.Values["firstDate"]);
             _restService = new RestService("rates/a/");
             _xMLParser = new XMLParser();
-            currencies = new ObservableCollection<Currency>();
+            Currencies = new ObservableCollection<Currency>();
             localsettings.Values["page"] = 2;
             if (localsettings.Values["selected_currency"] == null)
             {
@@ -116,24 +153,31 @@ namespace CurrencyAppNative.ViewModels
         private async void _downloadCurrentCurrency()
         {
             var downloadedRates = await _restService.GetDataAsync(SelectedCurrency.Code + "/" + DateTimeStart.ToString("yyyy-MM-dd") + "/" + DateTimeFinish.ToString("yyyy-MM-dd"));
+            //localsettings.Values["currentCurrencies"] = downloadedRates;
             //currencies = new List<Currency>(_xMLParser.ParseCurrentCurrencies(downloadedRates));
             //ThreadPool.QueueUserWorkItem(new WaitCallback(_parseData), downloadedRates);
             _parseData(downloadedRates);
         }
-        private void _parseData(object downloadedRates)
+        private async void _parseData(object downloadedRates)
         {
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
-            currencies.Clear();
-            //int counter = 0;
             MaxValue = data.Count;
+            ObservableCollection<Currency> newCurrencies = new ObservableCollection<Currency>();
             //currencies.CollectionChanged += Currencies_CollectionChanged;
-            for (int i = 0; i < data.Count; i++)
-            {
-                Progress++;
-                currencies.Add(data.ElementAt(i));
-            }
-
-        }      
+            newCurrencies.CollectionChanged += Currencies_CollectionChanged;
+            await PageContext.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
+             {
+                 Progress = 0;
+                 for (int i = 0; i < data.Count; i++)
+                 {
+                     //Progressss++;
+                     newCurrencies.Add(data.ElementAt(i));
+                     //new System.Threading.ManualResetEvent(false).WaitOne(10);
+                 }
+             }));
+            Currencies.Clear();
+            Currencies = newCurrencies;
+        }
 
         private void Currencies_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
