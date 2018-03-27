@@ -2,10 +2,8 @@
     x:Class="CurrencyAppNative.Views.CurrencyHistoryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CurrencyAppNative.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     mc:Ignorable="d">
     <Page.TopAppBar>
@@ -21,12 +19,8 @@
             <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
         </StackPanel>
         <ProgressBar Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}" Maximum="{x:Bind ViewModel.MaxValue}"/>
-        <!--<Charting:Chart x:Name="LineChart" Margin="0,20" VerticalAlignment="Top" Width="1000" Height="400">
-            <Charting:LineSeries x:Name="ChartLine" Title="{x:Bind ViewModel.Header}" IsTextScaleFactorEnabled="True" ItemsSource="{x:Bind ViewModel.currencies}" Margin="0" IndependentValuePath="Name" DependentValuePath="CurrencyVal" IsSelectionEnabled="True"/>
-        </Charting:Chart>-->
         <chart:SfChart x:Name="lineChart" Margin="10" Background="White">
 
-            <!--PrimaryAxis with scrollbar-->
             <chart:SfChart.PrimaryAxis>
                 <chart:CategoryAxis ShowGridLines="False">
                     <chart:CategoryAxis.Header>
@@ -35,7 +29,6 @@
                 </chart:CategoryAxis>
             </chart:SfChart.PrimaryAxis>
 
-            <!--SecondaryAxis with range customization-->
             <chart:SfChart.SecondaryAxis>
                 <chart:NumericalAxis RangePadding="Round" >
                     <chart:NumericalAxis.Header>
