@@ -46,7 +46,6 @@
     </RootType>
     <RootType FullName="Syncfusion.UI.Xaml.Charts.CategoryAxis">
       <RootProperty Name="ShowGridLines" />
-      <RootProperty Name="LabelFormat" />
       <RootProperty Name="Header" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">

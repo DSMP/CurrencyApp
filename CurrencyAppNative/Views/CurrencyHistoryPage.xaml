@@ -28,9 +28,9 @@
 
             <!--PrimaryAxis with scrollbar-->
             <chart:SfChart.PrimaryAxis>
-                <chart:CategoryAxis ShowGridLines="False" LabelFormat="dd/MM/yyyy">
+                <chart:CategoryAxis ShowGridLines="False">
                     <chart:CategoryAxis.Header>
-                        <TextBlock Margin="10" Text="Name" FontSize="14" FontFamily="SegoeUI"/>
+                        <TextBlock Margin="10" Text="Dates" FontSize="14" FontFamily="SegoeUI"/>
                     </chart:CategoryAxis.Header>
                 </chart:CategoryAxis>
             </chart:SfChart.PrimaryAxis>
@@ -39,7 +39,7 @@
             <chart:SfChart.SecondaryAxis>
                 <chart:NumericalAxis RangePadding="Round" >
                     <chart:NumericalAxis.Header>
-                        <TextBlock Margin="14" Text="CurrencyVal" FontSize="16" FontFamily="SegoeUI"/>
+                        <TextBlock Margin="14" Text="Currency" FontSize="16" FontFamily="SegoeUI"/>
                     </chart:NumericalAxis.Header>
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
