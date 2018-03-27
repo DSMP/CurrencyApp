@@ -166,8 +166,9 @@ namespace CurrencyAppNative.ViewModels
         {
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
             MaxValue = data.Count;
-            ObservableCollection<Currency> newCurrencies = new ObservableCollection<Currency>();
+            //ObservableCollection<Currency> newCurrencies = new ObservableCollection<Currency>();
             //currencies.CollectionChanged += Currencies_CollectionChanged;
+            Currencies.Clear();
             await Task.Factory.StartNew(async () =>
             {
                 Progress = 0;
@@ -177,14 +178,13 @@ namespace CurrencyAppNative.ViewModels
                     await DispatcherApp.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
                     {
                         Progress++;
-                        newCurrencies.Add(data.ElementAt(i));
+                        Currencies.Add(data.ElementAt(i));
 
                     }));
                 }
 
             });
-            Currencies.Clear();
-            Currencies = newCurrencies;
+            //Currencies = newCurrencies;
         }
     }
 }
