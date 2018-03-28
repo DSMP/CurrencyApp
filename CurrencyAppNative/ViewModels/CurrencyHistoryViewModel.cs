@@ -84,7 +84,7 @@ namespace CurrencyAppNative.ViewModels
         {
             get
             {
-                return _dateTimeFinish;//.Equals(DateTimeOffset.MinValue) ? new DateTimeOffset(DateTime.Parse((string)localsettings.Values["firstDate"])) : _dateTimeStart;
+                return _dateTimeFinish;//.Equals(DateTimeOffset.MaxValue) ? new DateTimeOffset(DateTime.Parse((string)localsettings.Values["firstDate"])) : _dateTimeStart;
             }
             set
             {
@@ -126,6 +126,10 @@ namespace CurrencyAppNative.ViewModels
                 SetProperty(ref _progressss, value);
             }
         }
+        string _headerFirst;
+        public string HeaderFirst { get {return _headerFirst + "Nie starsza niż: " + localsettings.Values["lastDate"];} set{ SetProperty(ref _headerFirst, value); } }
+        string _headerLast;
+        public string HeaderLast { get { return _headerFirst + "Nie młodsza niż: " + localsettings.Values["firstDate"]; } set { SetProperty(ref _headerFirst, value); } }
         double _maxValue;
         private int _checkerDay;
 
@@ -167,12 +171,19 @@ namespace CurrencyAppNative.ViewModels
 
         internal void Resume(bool freshStart)
         {
+            //localsettings.Values["finishUserDate"] = DateTimeFinish;
+            //localsettings.Values["startUserDate"] = DateTimeStart;
             if (!freshStart)
             {
                 _dontUpdateTwice = true;
                 DateTimeStart = (DateTimeOffset)localsettings.Values["startUserDate"];
                 _dontUpdateTwice = true;
                 DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"];
+            }
+            else
+            {
+                DateTimeStart = DateTimeOffset.Parse((string)localsettings.Values["lastDate"]);
+                DateTimeFinish = DateTimeOffset.Parse((string)localsettings.Values["firstDate"]);
             }
             _downloadCurrentCurrency();
         }
@@ -195,7 +206,7 @@ namespace CurrencyAppNative.ViewModels
         {
             Currencies.Clear();
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
-            localsettings.Values["currencyData"] = _xMLParser.ObjToXML<List<Currency>>(data);
+            //localsettings.Values["currencyData"] = _xMLParser.ObjToXML<List<Currency>>(data);
             Currency c;
             if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
             {

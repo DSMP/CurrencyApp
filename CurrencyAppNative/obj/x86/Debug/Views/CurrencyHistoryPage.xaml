@@ -15,8 +15,8 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub x:ConnectionId='4'                                   />        
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
-            <DatePicker x:ConnectionId='8'                                                      Header="Start Date"/>
-            <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
+            <DatePicker x:ConnectionId='8'                                                                                             />
+            <DatePicker x:ConnectionId='9'                                                                                             />
         </StackPanel>
         <ProgressBar x:ConnectionId='5' x:Name="ProgressBar" Height="50" Width="500"                                                                                                     Minimum="0"/>
         <chart:SfChart x:ConnectionId='6' x:Name="lineChart" Margin="10,20,50,0" Background="White"                                                  >

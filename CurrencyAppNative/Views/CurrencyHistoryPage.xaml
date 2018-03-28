@@ -15,8 +15,8 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub Header="{x:Bind ViewModel.Header}"/>        
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100" Spacing="20">
-            <DatePicker Date="{x:Bind ViewModel.DateTimeStart, Mode=TwoWay}" Header="Start Date"/>
-            <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="Finish Date"/>
+            <DatePicker Date="{x:Bind ViewModel.DateTimeStart, Mode=TwoWay}" Header="{x:Bind ViewModel.HeaderFirst}"/>
+            <DatePicker Date="{x:Bind ViewModel.DateTimeFinish, Mode=TwoWay}" Header="{x:Bind ViewModel.HeaderLast}"/>
         </StackPanel>
         <ProgressBar x:Name="ProgressBar" Height="50" Width="500" Value="{x:Bind ViewModel.Progress, Mode=TwoWay}" Maximum="{x:Bind ViewModel.MaxValue, Mode=TwoWay}" Minimum="0"/>
         <chart:SfChart x:Name="lineChart" Margin="10,20,50,0" Background="White" Header="{x:Bind ViewModel.SelectedCurrency.Name}">
