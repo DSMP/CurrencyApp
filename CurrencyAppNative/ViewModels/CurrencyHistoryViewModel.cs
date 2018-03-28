@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Data;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using System.Threading;
 using Windows.UI.Core;
+using System.Runtime.CompilerServices;
 
 namespace CurrencyAppNative.ViewModels
 {
@@ -126,6 +127,8 @@ namespace CurrencyAppNative.ViewModels
             }
         }
         double _maxValue;
+        private int _checkerDay;
+
         public double MaxValue { get { return _maxValue; } set { SetProperty(ref _maxValue, value); } }
         Windows.Storage.StorageFolder localFolder;
         Windows.Storage.ApplicationDataContainer localsettings;
@@ -169,26 +172,65 @@ namespace CurrencyAppNative.ViewModels
                 _dontUpdateTwice = true;
                 DateTimeStart = (DateTimeOffset)localsettings.Values["startUserDate"];
                 _dontUpdateTwice = true;
-                DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"]; 
+                DateTimeFinish = (DateTimeOffset)localsettings.Values["finishUserDate"];
             }
             _downloadCurrentCurrency();
         }
 
         private async void _downloadCurrentCurrency()
         {
-            var downloadedRates = await _restService.GetDataAsync(SelectedCurrency.Code + "/" + DateTimeStart.ToString("yyyy-MM-dd") + "/" + DateTimeFinish.ToString("yyyy-MM-dd"));
-            //localsettings.Values["currentCurrencies"] = downloadedRates;
-            //currencies = new List<Currency>(_xMLParser.ParseCurrentCurrencies(downloadedRates));
-            //ThreadPool.QueueUserWorkItem(new WaitCallback(_parseData), downloadedRates);
-            //new System.Threading.ManualResetEvent(false).WaitOne(50);
-            _parseData(downloadedRates);
+            var dataWczesniejsza = _dateTimeStart.AddDays(-2);
+            if (dataWczesniejsza < (DateTimeOffset.Parse((string)localsettings.Values["lastDate"])))
+            {
+                var downloadedRates = await _restService.GetDataAsync(SelectedCurrency.Code + "/" + DateTimeStart.ToString("yyyy-MM-dd") + "/" + DateTimeFinish.ToString("yyyy-MM-dd"));
+                var data = await _parseData(downloadedRates);
+            }
+            else
+            {
+                var downloadedRates = await _restService.GetDataAsync(SelectedCurrency.Code + "/" + DateTimeStart.AddDays(-2).ToString("yyyy-MM-dd") + "/" + DateTimeFinish.ToString("yyyy-MM-dd"));
+                var data = await _parseData(downloadedRates);
+                
+                //await Task.Delay(200);
+                //Currency c;
+                //if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
+                //{
+                //    if (!data.ElementAt(0).Equals(c))
+                //    {
+                //        Currencies.RemoveAt(0);
+                //        await Task.Delay(200);
+                //        if (!data.ElementAt(0).Equals(c))
+                //        {
+                //            Currencies.RemoveAt(0);
+                //        }
+                //    }
+                //}
+            }
         }
-        private async void _parseData(object downloadedRates)
+        private async Task<List<Currency>> _parseData(object downloadedRates)
         {
+            Currencies.Clear();
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
+            //if (!data.First().Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))
+            //{
+            //    //DateTimeStart = DateTimeStart.AddDays(-1);
+            //    //return;
+            //    _checkerDay++;
+            //}
+            Currency c;
+            if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
+            {
+                if (!data.ElementAt(0).Equals(c))
+                {
+                    data.RemoveAt(0);
+                    await Task.Delay(200);
+                    if (!data.ElementAt(0).Equals(c))
+                    {
+                        data.RemoveAt(0);
+                    }
+                }
+            }
+
             MaxValue = data.Count;
-            //ObservableCollection<Currency> newCurrencies = new ObservableCollection<Currency>();
-            //currencies.CollectionChanged += Currencies_CollectionChanged;
             Currencies.Clear();
             await Task.Factory.StartNew(async () =>
             {
@@ -200,12 +242,11 @@ namespace CurrencyAppNative.ViewModels
                     {
                         Progress++;
                         Currencies.Add(data.ElementAt(i));
-
                     }));
                 }
 
             });
-            //Currencies = newCurrencies;
+            return data;
         }
     }
 }
