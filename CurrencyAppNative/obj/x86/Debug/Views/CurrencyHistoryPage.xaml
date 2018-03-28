@@ -19,8 +19,8 @@
             <DatePicker x:ConnectionId='9'                                                       Header="Finish Date"/>
         </StackPanel>
         <ProgressBar x:ConnectionId='5' x:Name="ProgressBar" Height="50" Width="500"                                                                                                     Minimum="0"/>
-        <chart:SfChart x:ConnectionId='6' x:Name="lineChart" Margin="10" Background="White">
-
+        <chart:SfChart x:ConnectionId='6' x:Name="lineChart" Margin="10,20,50,0" Background="White"                                                  >
+            
             <chart:SfChart.PrimaryAxis>
                 <chart:CategoryAxis ShowGridLines="False">
                     <chart:CategoryAxis.Header>

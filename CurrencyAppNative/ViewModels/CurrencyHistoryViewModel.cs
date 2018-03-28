@@ -202,7 +202,6 @@ namespace CurrencyAppNative.ViewModels
                 if (!data.ElementAt(0).Equals(c))
                 {
                     data.RemoveAt(0);
-                    await Task.Delay(200);
                     if (!data.ElementAt(0).Equals(c))
                     {
                         data.RemoveAt(0);

@@ -41,10 +41,14 @@
     <RootType FullName="Syncfusion.UI.Xaml.Charts.SfChart">
       <RootProperty Name="Margin" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Header" />
       <RootProperty Name="PrimaryAxis" />
       <RootProperty Name="SecondaryAxis" />
       <RootProperty Name="Behaviors" />
       <RootProperty Name="Series" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
+      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Syncfusion.UI.Xaml.Charts.CategoryAxis">
       <RootProperty Name="ShowGridLines" />
@@ -67,9 +71,6 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="XBindingPath" />
       <RootProperty Name="YBindingPath" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
-      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
       <RootProperty Name="Date" />
