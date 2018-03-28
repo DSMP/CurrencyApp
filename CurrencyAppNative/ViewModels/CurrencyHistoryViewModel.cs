@@ -195,6 +195,7 @@ namespace CurrencyAppNative.ViewModels
         {
             Currencies.Clear();
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
+            localsettings.Values["currencyData"] = _xMLParser.ObjToXML<List<Currency>>(data);
             Currency c;
             if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
             {
