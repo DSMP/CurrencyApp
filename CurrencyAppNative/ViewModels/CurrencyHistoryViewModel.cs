@@ -189,33 +189,12 @@ namespace CurrencyAppNative.ViewModels
             {
                 var downloadedRates = await _restService.GetDataAsync(SelectedCurrency.Code + "/" + DateTimeStart.AddDays(-2).ToString("yyyy-MM-dd") + "/" + DateTimeFinish.ToString("yyyy-MM-dd"));
                 var data = await _parseData(downloadedRates);
-                
-                //await Task.Delay(200);
-                //Currency c;
-                //if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
-                //{
-                //    if (!data.ElementAt(0).Equals(c))
-                //    {
-                //        Currencies.RemoveAt(0);
-                //        await Task.Delay(200);
-                //        if (!data.ElementAt(0).Equals(c))
-                //        {
-                //            Currencies.RemoveAt(0);
-                //        }
-                //    }
-                //}
             }
         }
         private async Task<List<Currency>> _parseData(object downloadedRates)
         {
             Currencies.Clear();
             var data = (List<Currency>)_xMLParser.ParseCurrentCurrencies(downloadedRates.ToString());
-            //if (!data.First().Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))
-            //{
-            //    //DateTimeStart = DateTimeStart.AddDays(-1);
-            //    //return;
-            //    _checkerDay++;
-            //}
             Currency c;
             if ((c = data.Find(x => x.Name.Equals(DateTimeStart.ToString("yyyy-MM-dd")))) != null)
             {
@@ -228,6 +207,19 @@ namespace CurrencyAppNative.ViewModels
                         data.RemoveAt(0);
                     }
                 }
+            }
+            else
+            {
+                var jeden = DateTimeOffset.Parse(data.ElementAt(0).Name);
+                var dwa = DateTimeOffset.Parse(data.ElementAt(1).Name);
+                if (DateTimeStart.AddDays(-2).Equals(jeden))
+                {
+                    if (DateTimeStart.AddDays(-1).Equals(dwa))
+                    {
+                        data.RemoveAt(0);
+                    }
+                }
+
             }
 
             MaxValue = data.Count;
