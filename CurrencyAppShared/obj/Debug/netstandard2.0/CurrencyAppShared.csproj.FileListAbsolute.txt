@@ -1,9 +1,9 @@
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\bin\Debug\netstandard2.0\CurrencyAppShared.deps.json
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\bin\Debug\netstandard2.0\CurrencyAppShared.dll
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\bin\Debug\netstandard2.0\CurrencyAppShared.pdb
+C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.csprojResolveAssemblyReference.cache
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.csproj.CoreCompileInputs.cache
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.AssemblyInfoInputs.cache
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.AssemblyInfo.cs
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.dll
 C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.pdb
-C:\GitProjects\CurrencyAppNative\CurrencyAppShared\obj\Debug\netstandard2.0\CurrencyAppShared.csprojResolveAssemblyReference.cache

@@ -10,18 +10,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:textAlignment="center" />
-<!--<EditText
+    <EditText
         android:text="My first Xamarin.Android App"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:layout_gravity="center"
-        android:layout_weight="1" />-->
+        android:id="@+id/editText1"/>
 <!--<TextView
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />-->
+        android:id="@+id/textView2" 
+        android:layout_gravity="center"
+        android:layout_weight="1" />-->
 </LinearLayout>

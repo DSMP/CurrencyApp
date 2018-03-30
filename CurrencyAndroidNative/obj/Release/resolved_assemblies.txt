@@ -1,0 +1,7 @@
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\CurrencyAndroidNative.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\Java.Interop.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\Mono.Android.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\mscorlib.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\System.Core.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\System.dll
+C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Release\android\assets\System.Runtime.Serialization.dll

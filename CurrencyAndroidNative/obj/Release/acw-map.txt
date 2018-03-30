@@ -1,0 +1,4 @@
+CurrencyAndroidNative.MainActivity, CurrencyAndroidNative;md5532e045747e473e9ca2a8c4359a87621.MainActivity
+CurrencyAndroidNative.MainActivity, CurrencyAndroidNative, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5532e045747e473e9ca2a8c4359a87621.MainActivity
+CurrencyAndroidNative.MainActivity;md5532e045747e473e9ca2a8c4359a87621.MainActivity
+currencyandroidnative.MainActivity;md5532e045747e473e9ca2a8c4359a87621.MainActivity

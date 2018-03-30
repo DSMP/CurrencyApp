@@ -2,7 +2,6 @@ C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\bin\Debug\CurrencyAndroid
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\bin\Debug\CurrencyAndroidNative.pdb
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\bin\Debug\CurrencyAndroidNative.CurrencyAndroidNative.apk
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\bin\Debug\CurrencyAndroidNative.CurrencyAndroidNative-Signed.apk
-C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Debug\CurrencyAndroidNative.csprojResolveAssemblyReference.cache
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Debug\CurrencyAndroidNative.csproj.CoreCompileInputs.cache
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Debug\CurrencyAndroidNative.dll
 C:\GitProjects\CurrencyAppNative\CurrencyAndroidNative\obj\Debug\CurrencyAndroidNative.pdb
