@@ -45,7 +45,7 @@ namespace CurrencyAndroidNative
 		{
 			
 			// aapt resource value: 0x7f040001
-			public const int editText1 = 2130968577;
+			public const int DatesRecyclerView = 2130968577;
 			
 			// aapt resource value: 0x7f040000
 			public const int textView1 = 2130968576;
